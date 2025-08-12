@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="tr">
 <head>
@@ -5,7 +7,359 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="HTML Başlangıç Sayfası">
     <title>Muz Cmh. Otel</title>
-    <link rel="stylesheet" href="style.css" />
+    <style>
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Genel yazı tipi ve arka plan */
+body {
+    font-family: 'Segoe UI', Arial, Helvetica, sans-serif;
+    color: #333;
+    line-height: 1.6;
+    background-color: rgba(255, 255, 4, 0.616);
+}
+
+/* Başlıklar */
+h1, h2, h3 {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+/* Paragraflar */
+p {
+    margin-bottom: 15px;
+}
+
+/* Buton */
+button {
+    background-color: #3498db;
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    cursor: pointer;
+    border-radius: 8px;
+    font-size: 1rem;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+button:hover {
+    background-color: #2980b9;
+    transform: translateY(-2px);
+}
+
+/* NAVBAR */
+nav {
+    background: linear-gradient(90deg, black, #222);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 25px;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+
+/* Logo */
+nav .logo img {
+    height: 55px;
+    border-radius: 8px;
+}
+
+/* Menü */
+nav ul {
+    display: flex;
+    list-style-type: none;
+    gap: 25px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1rem;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+nav ul li a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    width: 0%;
+    height: 2px;
+    background-color: #3498db;
+    transition: width 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: #3498db;
+}
+nav ul li a:hover::after {
+    width: 100%;
+}
+
+/* Hero kısmı */
+.hero {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    padding: 50px 20px;
+    background-color: yellowgreen;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    margin-top: 20px;
+}
+
+/* Yazı alanı */
+.hero-text {
+    flex: 1;
+    padding-right: 30px;
+}
+
+/* Resim alanı */
+.hero-image {
+    flex: 1;
+    text-align: center;
+}
+.hero-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 12px;
+}
+
+/* Bölümler */
+section {
+    padding: 40px 20px;
+    background-color: yellowgreen;
+    margin-top: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+}
+
+section h2 {
+    margin-bottom: 15px;
+}
+
+/* About img */
+#about img {
+    border-radius: 50%;
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
+    display: block;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+/* Rooms */
+#Rooms {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    text-align: center;
+}
+#Rooms h2 {
+    flex-basis: 100%;
+    margin-bottom: 20px;
+}
+#Rooms img {
+    height: 300px;
+    width: 300px;
+    object-fit: cover;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    transition: transform 0.3s ease;
+}
+#Rooms img:hover {
+    transform: scale(1.05);
+}
+
+/* Team section */
+.team-section .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+.team-section .profile-grid img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    margin-bottom: 10px;
+}
+
+/* Pricing */
+#pricing {
+    text-align: center;
+}
+
+.pricing-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.pricing-card {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+    padding: 30px 20px;
+    width: 280px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.pricing-card.featured {
+    border: 3px solid #3498db;
+    box-shadow: 0 8px 30px rgba(52, 152, 219, 0.4);
+}
+
+.pricing-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+}
+
+.pricing-card h3 {
+    margin-bottom: 10px;
+    color: #2c3e50;
+}
+
+.price {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #3498db;
+    margin-bottom: 25px;
+}
+
+.pricing-card button:hover {
+    background-color: #2980b9;
+    transform: translateY(-2px);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .hero {
+        flex-direction: column;
+        padding: 20px;
+    }
+    .hero-text, .hero-image {
+        padding-right: 0;
+        text-align: center;
+    }
+    #Rooms {
+        flex-direction: column;
+        align-items: center;
+    }
+    .pricing-grid {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+/* FAQ */
+.faq-section {
+  padding: 40px 20px;
+  background-color: #f9f9f9;
+  border-radius: 12px;
+  max-width: 800px;
+  margin: 40px auto;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+}
+
+.faq-section h2 {
+  font-size: 2rem;
+  margin-bottom: 8px;
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+.faq-question {
+  font-weight: 700;
+  color: #2980b9;
+  margin-bottom: 10px;
+}
+
+.faq-answer {
+  color: #555;
+  line-height: 1.5;
+}
+
+/* Contact */
+.contact-container {
+  display: flex;
+  gap: 40px;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.contact-text h3 {
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+  font-weight: bold;
+  color: #2980b9;
+}
+
+.contact-map img {
+  width: 100%;
+  max-width: 400px;
+  height: 300px;
+  border-radius: 12px;
+}
+
+/* Footer */
+footer {
+  background-color: #222;
+  color: #eee;
+  padding: 25px 20px;
+  margin-top: 40px;
+  font-size: 0.9rem;
+}
+
+.footer-links {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 15px;
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  flex-wrap: wrap;
+}
+
+.footer-links li a {
+  color: #c5c2c2;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.footer-links li a:hover {
+  color: #22628d;
+}
+#contact {
+  background-color: #e1f0f7;
+  padding: 40px 20px;
+  border-radius: 12px;
+  margin-top: 40px;
+}
+    </style>
 </head>
 <body>
     <nav>
@@ -26,8 +380,9 @@
     <header id="hero" class="hero">   
         <div class="hero-text">
             <h1>Muz Cmh. Otel</h1>
-            <p>Katkılı değil Katkısız rahatlık</p>
-            <p>KATKILI DEĞİL KATKISIZ GIDA İÇİN</p>
+            <h2>Katkılı değil Katkısız rahatlık</h2>
+            <h2>KATKILI DEĞİL KATKISIZ GIDA İÇİN</h2>
+            <p>Otelimizde güneş enerjisiyle aydınlanan odalar, yağmur suyu toplama sistemleri ve yerel üreticilerden temin edilen katkısız lezzetler sizi bekliyor.</p>
             <button>Hemen Al</button>    
         </div>
         <div class="hero-image">
@@ -138,7 +493,7 @@
 
     <div class="faq-item">
       <h3 class="faq-question">Soru 3: Nasıl size destek olabilirim?</h3>
-      <p class="faq-answer">Cevap 3: özellikle bize destek vermenize gerek yok Hayvanlara destek veren herhangi bir kuruma destek verirseniz bize destek vermiş olursunuz</p>
+      <p class="faq-answer">Cevap 3: özellikle bize destek vermenize gerek yok Hayvanlara ve çevreye  destek veren herhangi bir kuruma destek verirseniz bize destek vermiş olursunuz</p>
     </div>
   </div>
 </section>
