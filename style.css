@@ -7,10 +7,10 @@
 
 /* Genel yazı tipi ve arka plan */
 body {
-    font-family: Arial, Helvetica, sans-serif;
-    background-color: #f4f4f4;
+    font-family: 'Segoe UI', Arial, Helvetica, sans-serif;
     color: #333;
     line-height: 1.6;
+    background-color: rgba(255, 255, 4, 0.616); /* İstersen burayı rgba ya da #f4f4f4 yap */
 }
 
 /* Başlıklar */
@@ -28,29 +28,36 @@ p {
 button {
     background-color: #3498db;
     color: white;
-    padding: 10px 20px;
+    padding: 12px 24px;
     border: none;
     cursor: pointer;
-    border-radius: 5px;
+    border-radius: 8px;
     font-size: 1rem;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 button:hover {
     background-color: #2980b9;
+    transform: translateY(-2px);
 }
 
 /* NAVBAR */
 nav {
-    background-color: black;
+    background: linear-gradient(90deg, black, #222);
     color: white;
     display: flex;
     align-items: center;
     justify-content: space-between; /* Logo solda, menü sağda */
-    padding: 10px 20px;
+    padding: 12px 25px;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
 }
 
 /* Logo */
 nav .logo img {
-    height: 50px; /* Logo boyutu */
+    height: 55px;
     border-radius: 8px;
 }
 
@@ -58,7 +65,7 @@ nav .logo img {
 nav ul {
     display: flex;
     list-style-type: none;
-    gap: 25px; /* Menü elemanları arası boşluk */
+    gap: 25px;
 }
 
 nav ul li a {
@@ -66,20 +73,39 @@ nav ul li a {
     text-decoration: none;
     font-weight: bold;
     font-size: 1rem;
+    position: relative;
     transition: color 0.3s ease;
 }
 
+nav ul li a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    width: 0%;
+    height: 2px;
+    background-color: #3498db;
+    transition: width 0.3s ease;
+}
+
 nav ul li a:hover {
-    color: gray;
+    color: #3498db;
+}
+nav ul li a:hover::after {
+    width: 100%;
 }
 
 /* Hero kısmı yan yana */
 .hero {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
-    padding: 40px 20px;
-    background-color: white;
+    padding: 50px 20px;
+    background-color: yellowgreen;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    margin-top: 20px;
 }
 
 /* Yazı alanı */
@@ -96,21 +122,295 @@ nav ul li a:hover {
 .hero-image img {
     max-width: 100%;
     height: auto;
-    border-radius: 10px;
+    border-radius: 12px;
 }
 
-/* Bölümler için biraz padding */
+/* Bölümler */
 section {
     padding: 40px 20px;
-    background-color: white;
+    background-color: yellowgreen;
     margin-top: 20px;
-    border-radius: 10px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
 }
 
-/* Başlıklar için */
+/* Başlıklar */
 section h2 {
     margin-bottom: 15px;
 }
-img{
-    border-radius: 50%
+
+/* About img */
+#about img {
+    border-radius: 50%;
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
+    display: block;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+/* Rooms */
+#Rooms {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    text-align: center;
+}
+#Rooms h2 {
+    flex-basis: 100%;
+    margin-bottom: 20px;
+}
+#Rooms img {
+    height: 300px;
+    width: 300px;
+    object-fit: cover;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    transition: transform 0.3s ease;
+}
+#Rooms img:hover {
+    transform: scale(1.05);
+}
+
+/* Team section grid */
+.team-section .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+.team-section .profile-grid img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    margin-bottom: 10px;
+}
+
+/* Pricing Section */
+#pricing {
+    text-align: center;
+}
+
+.pricing-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.pricing-card {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+    padding: 30px 20px;
+    width: 280px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.pricing-card.featured {
+    border: 3px solid #3498db;
+    box-shadow: 0 8px 30px rgba(52, 152, 219, 0.4);
+}
+
+.pricing-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+}
+
+.pricing-card h3 {
+    margin-bottom: 10px;
+    color: #2c3e50;
+}
+
+.pricing-card p {
+    margin-bottom: 20px;
+}
+
+.price {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #3498db;
+    margin-bottom: 25px;
+}
+
+.pricing-card button {
+    background-color: #3498db;
+    color: white;
+    padding: 12px 25px;
+    font-size: 1.1rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.pricing-card button:hover {
+    background-color: #2980b9;
+    transform: translateY(-2px);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .hero {
+        flex-direction: column;
+        padding: 20px;
+    }
+    .hero-text, .hero-image {
+        padding-right: 0;
+        text-align: center;
+    }
+    #Rooms {
+        flex-direction: column;
+        align-items: center;
+    }
+    .pricing-grid {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+.faq-section {
+  padding: 40px 20px;
+  background-color: #f9f9f9;
+  border-radius: 12px;
+  max-width: 800px;
+  margin: 40px auto;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+}
+
+.faq-section h2 {
+  font-size: 2rem;
+  margin-bottom: 8px;
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+.faq-section h3 {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  font-weight: 600;
+  color: #34495e;
+}
+
+/* FAQ Container */
+.faq-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Her bir soru-cevap bloğu */
+.faq-item {
+  background-color: white;
+  padding: 20px 25px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+/* Soru başlığı */
+.faq-question {
+  font-weight: 700;
+  color: #2980b9;
+  margin-bottom: 10px;
+}
+
+/* Cevap paragrafı */
+.faq-answer {
+  color: #555;
+  line-height: 1.5;
+}
+.contact-container {
+  display: flex;
+  gap: 40px;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.contact-text {
+  flex: 1 1 300px;
+  color: #333;
+}
+
+.contact-text h3 {
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+  font-weight: bold;
+  color: #2980b9;
+}
+
+.contact-text p {
+  margin-bottom: 12px;
+  font-size: 1.1rem;
+  line-height: 1.4;
+}
+
+.contact-map {
+  flex: 1 1 400px;
+  text-align: center;
+}
+
+.contact-map img,
+.contact-map iframe {
+  width: 100%;
+  max-width: 400px;
+  height: 300px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* Footer */
+
+footer {
+  background-color: #222;
+  color: #eee;
+  padding: 25px 20px;
+  margin-top: 40px;
+  font-size: 0.9rem;
+}
+
+.footer-content {
+  max-width: 1000px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.footer-links {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 15px;
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  flex-wrap: wrap;
+}
+
+.footer-links li a {
+  color: #c5c2c2;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.footer-links li a:hover {
+  color: #22628d;
+}
+
+footer p {
+  margin: 0;
+}
+#contact {
+  background-color: #e1f0f7;
+  padding: 40px 20px;
+  border-radius: 12px;
+  margin-top: 40px;
 }
