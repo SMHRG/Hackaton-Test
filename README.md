@@ -6,7 +6,6 @@
 
 - 🏨 Otel odalarını listeleme ve detaylarını görüntüleme  
 - 📅 Rezervasyon yapma ve onay alma  
-- 📱 Mobil uyumlu tasarım  
 - 💬 İletişim ve konum bilgileri sayfası  
 - 🌐 Gelişmiş kullanıcı arayüzü (isteğe bağlı: React, HTML/CSS)
 
